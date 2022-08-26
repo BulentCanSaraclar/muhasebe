@@ -1,0 +1,50 @@
+<div class="container">
+  <button mat-fab color="primary" matTooltip="Müşteri Listesine Dön" routerLink='/musteriler'>
+    <mat-icon aria-label="label">arrow_back_ios_new</mat-icon>
+  </button>
+  <button mat-fab color="primary" style="margin-left: 15px;" matTooltip="Yeni Borc Ekle" (click)="BorcEkle()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+
+  <span  *ngIf="this.borclar.length === 0">
+    <span>{{musteri.MusteriId}} <h1>Bu Müşteriye Ait Borç Kaydı Bulunamadı</h1></span>
+  </span>
+  <span  *ngIf="this.borclar.length > 0">
+    <span>{{musteri.MusteriId}} <h1>Bu Müşteriye Ait Borç Kaydı Listesi</h1></span>
+  </span>
+
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="Aciklama">
+      <mat-header-cell *matHeaderCellDef> <b>Açıklama</b>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let borc"> {{borc.Aciklama}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="BorcTutari">
+      <mat-header-cell *matHeaderCellDef> <b>Borç Tutarı</b>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let borc"> {{borc.BorcTutari | currency:"₺"}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Islemler">
+      <mat-header-cell *matHeaderCellDef> <b>İşlemler</b>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let borc">
+        <button mat-icon-button color="accent" matTooltip="Düzenle" (click)="BorcDuzenle(borc)">
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Sil" (click)="BorcSil(borc.BorcId)">
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+  </mat-table>
+
+  <div class="toplam">
+    <h3>Toplam</h3>
+    <h3>{{toplam | currency:"₺"}}</h3>
+  </div>
+</div>

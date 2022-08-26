@@ -1,0 +1,14 @@
+
+  <span>{{Baslik}}</span>
+
+<div class="container">
+  <form>
+
+    <input matInput placeholder="Musteri Adı"  [(ngModel)]="musteriKayit.MusteriAdi" name="MusteriAdi">
+    <input matInput placeholder="Musteri Tel" [(ngModel)]="musteriKayit.MusteriTel" name="MusteriTel">
+    <input matInput placeholder="Musteri Adres" [(ngModel)]="musteriKayit.MusteriAdres" name="MusteriAdres">
+
+    <button mat-raised-button color="primary" (click)="this.dialogRef.close(musteriKayit)">Kaydet</button>
+    <button mat-raised-button color="warn" (click)="this.dialogRef.close()">İptal</button>
+  </form>
+</div>

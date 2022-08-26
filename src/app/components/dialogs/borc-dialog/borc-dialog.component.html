@@ -1,0 +1,13 @@
+
+  <span>Borç {{Baslik}}</span>
+
+<div class="container">
+    <div>
+      <input  placeholder="Açıklama" name="aciklama" [ngModelOptions]="{standalone: true}" [(ngModel)]="yeniKayit.Aciklama" >
+    </div>
+    <div>
+      <input  placeholder="Tutar"  name="tutar" [ngModelOptions]="{standalone: true}" [(ngModel)]="yeniKayit.BorcTutari"  type="number">
+    </div>
+    <button mat-raised-button color="primary" (click)="this.dialogRef.close(yeniKayit)">Kaydet</button>
+    <button mat-raised-button color="warn" (click)="this.dialogRef.close()">İptal</button>
+</div>
